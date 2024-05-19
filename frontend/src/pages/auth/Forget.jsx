@@ -2,36 +2,35 @@ import React, { useState } from 'react'
 import Layout from '../../components/layout/Layout'
 import toast from 'react-hot-toast';
 import axios from 'axios'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './auth.css'
 
 const Forget = () => {
     const [email,setEmail] =useState("")
-    const [newpassword,setNwePassword] =useState("")
+    const [newPassword,setNwePassword] =useState("")
     const [answer,setAnswer] =useState("")
 
 const navigate=useNavigate()
-const location=useLocation()
     const handleSubmit=async(event)=>{
         event.preventDefault()
         try {
-            const response=await axios.post('http://localhost:8000/api/forget',{
-              email,newpassword,answer
-            })
-           if( response.data.success){
-            toast.success(response.data.message)
-            navigate('/login')
-           }
-           else{
-            toast.error(response.data.message)
-           }
-            
-        } catch (error) {
-            console.log(error)
-            toast.error("Somthing Went Wrong")
-            
-        } 
-    }
+            const res=await axios.post('http://localhost:8000/api/forgetPasswd',{
+                email,
+                newPassword,
+                answer,
+              });
+              if (res && res.data.success) {
+                toast.success(res.data && res.data.message);
+        
+                navigate("/login");
+              } else {
+                toast.error(res.data.message);
+              }
+            } catch (error) {
+              console.log(error);
+              toast.error("Something went wrong");
+            }
+          };
   return (
     <Layout>
     <div className="form-container" style={{ minHeight: "90vh" }}>
@@ -41,7 +40,6 @@ const location=useLocation()
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
             placeholder="Enter Your Email "
             required
             value={email}
@@ -52,10 +50,9 @@ const location=useLocation()
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
             placeholder="Enter New Password"
             required
-            value={newpassword}
+            value={newPassword}
             onChange={(e)=>setNwePassword(e.target.value)}
           />
         </div>
@@ -63,7 +60,6 @@ const location=useLocation()
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
             placeholder="Enter Faviorite Game"
             required
             value={answer}

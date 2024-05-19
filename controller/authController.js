@@ -131,45 +131,63 @@ export const testColntroller=(req,res)=>{
 }
 
 
+
+
+
 //forget password
 
-export const forgetController=async(req,res)=>{
+export const forgetController = async (req, res) => {
     try {
-        const [email,answer,newPassword]=req.body
-        if(!email){
-            res.staus(400).send({msg:'Email is Require'})
+        console.log('Request body:', req.body);
+        
+        const { email, answer, newPassword } = req.body;
+
+        if (!email) {
+            console.log('Email is required');
+            return res.status(400).send({ msg: 'Email is required' });
         }
-        if(!answer){
-            res.staus(400).send({msg:'Answer is Require'})
+        if (!answer) {
+            console.log('Answer is required');
+            return res.status(400).send({ msg: 'Answer is required' });
         }
-        if(!newPassword){
-            res.staus(400).send({msg:'New Password is Require'})
-        }
-        //chceck validation
-        const user=await userModel.findOne({email,answer})
-        if(!user){
-            return res.staus(400).send({
-                msg:'Wrong Email or Answer',
-            })
-        }
-        const hashed=await hashPassword(newPassword)
-        await userModel.findByIdAndUpdate(user,_id ,{password:hashed})
-        res.status(200).send({
-            msg:"Pass",
-            success:true
-        })
+        if (!newPassword) {
+            console.log('New password is required');
+            return res.status(400).send({ msg: 'New password is required' });
         }
 
-     catch (error) {
-        console.log(error)
-        res.status(500).send({
-            msg:'Someting went wrong',
-            success:false,
-            error
-        })
+        console.log('Finding user with email:', email, 'and answer:', answer);
+        const user = await userModel.findOne({ email, answer });
+        if (!user) {
+            console.log('Wrong email or answer');
+            return res.status(404).send({
+                success: false,
+                message: 'Wrong email or answer',
+            });
+        }
+
+        console.log('Hashing new password');
+        const hashedPassword = await hashPassword(newPassword);
         
+        console.log('Updating user password');
+        await userModel.findByIdAndUpdate(user._id, { password: hashedPassword });
+
+        console.log('Password changed successfully');
+        res.status(200).send({
+            success: true,
+            msg: 'Password changed successfully',
+        });
+
+    } catch (error) {
+        console.error('Error occurred in forgetController:', error);
+
+        res.status(500).send({
+            success: false,
+            msg: 'Something went wrong',
+            error: error.message || error
+        });
     }
-}
+};
+
 
 //auth protect
 export const userProtect=(req,res)=>{

@@ -12,7 +12,7 @@ router.post('/login',loginController)
 
 //forget
 
-router.post('/forget',forgetController)
+router.post('/forgetPasswd',forgetController)
 
 //test
 router.get('/test',requireSignInMiddleWear,isAdmin, testColntroller)

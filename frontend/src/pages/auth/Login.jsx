@@ -51,7 +51,6 @@ const location=useLocation()
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
             placeholder="Enter Your Email "
             required
             value={email}
@@ -62,7 +61,6 @@ const location=useLocation()
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
             placeholder="Enter Your Password"
             required
             value={password}
