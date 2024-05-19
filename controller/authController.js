@@ -96,8 +96,10 @@ export const loginController=async(req,res)=>{
                 name:user.name,
                 email:user.email,
                 phone:user.phone,
-                address:user.address
+                address:user.address,
+                role: user.role,
             },
+            
             token,
         })
     } catch (error) {
@@ -203,3 +205,20 @@ export const userProtect=(req,res)=>{
     }
  }
 
+
+ //admin auth protect
+export const adminProtect=(req,res)=>{
+    try {
+        res.status(200).send({ok:true});
+    } catch (error) {
+     console.log(error)
+     res.status(400).send({
+         msg:'Error in Admin Protected Route',
+         success:false
+     })
+     
+    }
+ }
+
+
+ 

@@ -6,9 +6,16 @@ import PageNotFound from './pages/PageNotFound'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Register from './pages/auth/Register'
 import Login from './pages/auth/Login'
-import Dashboard_User from './pages/dasboard/Dashboard_User'
+import Dashboard_User from './pages/User/Dashboard_User'
 import PrivateRoute from './components/routes/Private'
 import Forget from './pages/auth/Forget'
+import AdminRoute from './components/routes/Admin'
+import Dasboard from './pages/Admin/Dasboard'
+import Create_Category from './pages/Admin/Create_Category'
+import Create_Product from './pages/Admin/Create_Product'
+import Users from './pages/Admin/Users'
+import Profile from './pages/User/Profile'
+import Oders from './pages/User/Oders'
 function App() {
  
 
@@ -26,7 +33,16 @@ function App() {
     {/* protected Route */}
     
     <Route path='/dashboard' element={<PrivateRoute/>}>
-    <Route path='' element={<Dashboard_User/>}/>
+    <Route path='user' element={<Dashboard_User/>}/>
+    <Route path='user/profile' element={<Profile/>}/>
+    <Route path='user/orders' element={<Oders/>}/>
+    </Route>
+
+    <Route path='/dashboard' element={<AdminRoute/>}>
+    <Route path='admin' element={<Dasboard/>}/>
+    <Route path='admin/create-product' element={<Create_Product/>}/>
+    <Route path='admin/create-category' element={<Create_Category/>}/>
+    <Route path='admin/users' element={<Users/>}/>
     </Route>
    </Routes>
    
