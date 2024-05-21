@@ -4,6 +4,7 @@ import userModels from '../models/userModels.js';
 //protected route token use
 export const requireSignInMiddleWear=async(req,res,next)=>{
     try {
+        console.log("Test")
         const decoded = jwt.verify(req.headers.authorization,process.env.JWT_SECRET_KEY);
     req.user=decoded;
         next()
@@ -20,6 +21,7 @@ export const requireSignInMiddleWear=async(req,res,next)=>{
 
 export const isAdmin=async(req,res,next)=>{
     try {
+        console.log("Test")
         const user =await userModels.findById(req.user._id)
         if(user.role !== 1){
             return res.status(401).send({
