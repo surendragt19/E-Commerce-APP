@@ -96,3 +96,28 @@
   color: white;
 }
 
+.list-group-item{
+  font-style: italic;
+}
+.list-group-item:hover{
+  background-color: green;
+  color: white;
+  padding: 10px;
+}
+
+/* Products.css */
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .card {
+      width: 100%;
+  }
+}

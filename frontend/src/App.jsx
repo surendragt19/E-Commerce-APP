@@ -16,6 +16,7 @@ import Create_Product from './pages/Admin/Create_Product'
 import Users from './pages/Admin/Users'
 import Profile from './pages/User/Profile'
 import Oders from './pages/User/Oders'
+import Products from './pages/Admin/Products'
 function App() {
  
 
@@ -42,6 +43,7 @@ function App() {
     <Route path='admin' element={<Dasboard/>}/>
     <Route path='admin/create-product' element={<Create_Product/>}/>
     <Route path='admin/create-category' element={<Create_Category/>}/>
+    <Route path='admin/products' element={<Products/>}/>
     <Route path='admin/users' element={<Users/>}/>
     </Route>
    </Routes>
