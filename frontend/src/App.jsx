@@ -18,6 +18,7 @@ import Profile from './pages/User/Profile'
 import Oders from './pages/User/Oders'
 import Products from './pages/Admin/Products'
 import UpdateProduct from './pages/Admin/UpdateProduct'
+import Search from './pages/Search'
 function App() {
  
 
@@ -26,6 +27,7 @@ function App() {
    <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/about' element={<About/>}/>
+    <Route path='/search' element={<Search/>}/>
     <Route path='/contact' element={<Contact/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/login' element={<Login/>}/>

@@ -138,7 +138,7 @@ const Home = () => {
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
-              <div className="card m-2" style={{ width: "18rem" }}>
+              <div className="card m-3" style={{ width: "20rem" }}>
                 <img
                   src={`http://localhost:8000/product/productPhoto/${p._id}`}
                   className="card-img-top"
@@ -151,7 +151,7 @@ const Home = () => {
                   </p>
                   <p className="card-text"> ₹ {p.price}</p>
                   <button class="btn btn-primary ms-1">More Details</button>
-                  <button class="btn btn-secondary ms-1">ADD TO CART</button>
+                  <button class="btn btn-warning ms-1">ADD TO CART</button>
                 </div>
               </div>
             ))}
@@ -159,13 +159,13 @@ const Home = () => {
           <div className="m-2 p-3">
             {products && products.length < total && (
               <button
-                className="btn btn-warning"
+                className="btn btn-primary"
                 onClick={(e) => {
                   e.preventDefault();
                   setPage(page + 1);
                 }}
               >
-                {loading ? "Loading ..." : "Loadmore"}
+                {loading ? "Loading ..." : "Loadmore.."}
               </button>
             )}
           </div>

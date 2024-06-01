@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/authC'
+import SearchInput from '../Forms/SearchInput'
 
 
 const Header = () => {
@@ -26,6 +27,7 @@ const Header = () => {
     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+      <SearchInput/>
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to="/">Home</Link>
         </li>
