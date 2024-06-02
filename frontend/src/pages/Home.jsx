@@ -107,9 +107,9 @@ const Home = () => {
         <div className="col-md-2">
           <h4 className="text-center">Filter By Category</h4>
           <div className="d-flex flex-column">
-            {categories?.map((c) => (
+            {categories?.map((c,index) => (
               <Checkbox
-                key={c._id}
+                key={index}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
               >
                 {c.name}
@@ -120,8 +120,8 @@ const Home = () => {
           <h4 className="text-center mt-4">Filter By Price</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-              {Prices?.map((p) => (
-                <div key={p._id}>
+              {Prices?.map((p,indexValue) => (
+                <div key={indexValue}>
                   <Radio value={p.array}>{p.name}</Radio>
                 </div>
               ))}
@@ -139,8 +139,8 @@ const Home = () => {
         <div className="col-md-9">
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
-            {products?.map((p) => (
-              <div className="card m-3" style={{ width: "20rem" }}>
+            {products?.map((p,i) => (
+              <div key={i} className="card m-3" style={{ width: "20rem" }}>
                 <img
                   src={`http://localhost:8000/product/productPhoto/${p._id}`}
                   className="card-img-top"
@@ -152,8 +152,8 @@ const Home = () => {
                     {p.description.substring(0, 30)}...
                   </p>
                   <p className="card-text"> ₹ {p.price}</p>
-                  <button class="btn btn-primary ms-1" onClick={ () => navigate(`/product/${p.slug}`)}>More Details</button>
-                  <button class="btn btn-warning ms-1">ADD TO CART</button>
+                  <button className="btn btn-primary ms-1" onClick={ () => navigate(`/product/${p.slug}`)}>More Details</button>
+                  <button className="btn btn-warning ms-1">ADD TO CART</button>
                 </div>
               </div>
             ))}

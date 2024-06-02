@@ -64,7 +64,7 @@ const ProductDetails = () => {
         )}
         <div className="d-flex flex-wrap">
           {relatedProducts?.map((p) => (
-            <div className="card m-2" style={{ width: "18rem" }}>
+            <div  key={p} className="card m-2" style={{ width: "18rem" }}>
               <img
                 src={`http://localhost:8000/product/productPhoto/${p?._id}`}
                 className="card-img-top"
@@ -80,7 +80,7 @@ const ProductDetails = () => {
                 >
                   More Details
                 </button>
-                <button class="btn btn-secondary ms-1">ADD TO CART</button>
+                <button className="btn btn-secondary ms-1">ADD TO CART</button>
               </div>
             </div>
           ))}

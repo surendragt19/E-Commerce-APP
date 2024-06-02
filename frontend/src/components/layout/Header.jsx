@@ -2,10 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/authC'
 import SearchInput from '../Forms/SearchInput'
+import useCategory from '../../hooks/useCategory'
 
 
 const Header = () => {
   const [auth,setAuth]=useAuth()
+
+  const categories=useCategory()
+
 
   const handLogOut=()=>{
     setAuth({
@@ -29,11 +33,27 @@ const Header = () => {
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
       <SearchInput />
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+          <Link className="nav-link" aria-current="page" to="/">Home</Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/category">Category</Link>
-        </li>
+
+        <li className="nav-item dropdown">
+  <Link className="nav-link dropdown-toggle"  data-bs-toggle="dropdown" to={"/categories"}>
+  Categories
+  </Link>
+  
+  <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+
+  <li><Link className="dropdown-item" to={"/categories"}>All Categories</Link></li>
+ <li><hr className="dropdown-divider" /></li>
+
+  {categories?.map((ele, index) => (
+    <li key={index}><Link className="dropdown-item" to={`/category/${ele.slug}`}>{ele.name}</Link></li>
+  ))}
+</ul>
+</li>
+
+{/* authetication */}
+
       {
         !auth.user ? (<>
           <li className="nav-item">

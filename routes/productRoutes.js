@@ -9,7 +9,8 @@ import {createProductController,
     productFiltersController,
      productCountController,
       productListController,
-      realtedProductController
+      realtedProductController,
+      productCategoryController
     ,searchProductController} from '../controller/productController.js'
 import formidable from 'express-formidable';
 const router=express.Router()
@@ -44,5 +45,8 @@ router.get("/productList/:page", productListController);
 router.get("/search/:keyword", searchProductController);
 //releted product
 router.get("/relatedProduct/:pid/:cid", realtedProductController);
+
+//category wise product
+router.get("/productCategory/:slug", productCategoryController);
 
 export default router;
