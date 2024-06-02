@@ -19,6 +19,7 @@ import Oders from './pages/User/Oders'
 import Products from './pages/Admin/Products'
 import UpdateProduct from './pages/Admin/UpdateProduct'
 import Search from './pages/Search'
+import ProductDetails from './pages/ProductDetails'
 function App() {
  
 
@@ -27,6 +28,7 @@ function App() {
    <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/about' element={<About/>}/>
+    <Route path='/product/:slug' element={<ProductDetails/>}/>
     <Route path='/search' element={<Search/>}/>
     <Route path='/contact' element={<Contact/>}/>
     <Route path='/register' element={<Register/>}/>
