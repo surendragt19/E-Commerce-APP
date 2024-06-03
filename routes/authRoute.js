@@ -1,5 +1,5 @@
 import express from 'express'
-import {loginController, registerController, testColntroller, userProtect,forgetController,adminProtect} from '../controller/authController.js'
+import {loginController, registerController,updateProfileController, testColntroller, userProtect,forgetController,adminProtect} from '../controller/authController.js'
 import { isAdmin, requireSignInMiddleWear } from '../middlewears/authMiddlewear.js';
 const router=express.Router();
 
@@ -23,6 +23,7 @@ router.get('/user',requireSignInMiddleWear,userProtect)
 //dahboard admin protected route
 router.get('/admin',requireSignInMiddleWear, isAdmin, adminProtect)
 
-
+//update profile
+router.put("/profile", requireSignInMiddleWear, updateProfileController);
 
 export default router;
