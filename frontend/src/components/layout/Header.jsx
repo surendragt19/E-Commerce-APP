@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/authC'
 import SearchInput from '../Forms/SearchInput'
 import useCategory from '../../hooks/useCategory'
+import {useCart} from '../../context/cart'
 
 
 const Header = () => {
   const [auth,setAuth]=useAuth()
-
+  const [cart] = useCart();
   const categories=useCategory()
 
 
@@ -99,7 +100,13 @@ const Header = () => {
                 </>
               )}
         <li className="nav-item">
-          <Link className="nav-link" to="/cart">Cart(0)</Link>
+          <Link className="nav-link" to="/cart">Cart 
+          <sup>
+          <span className="badge rounded-pill bg-danger">{cart?.length}</span>
+          </sup>
+          
+
+          </Link>
         </li>
         </ul>
     </div>
