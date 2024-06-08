@@ -35,14 +35,9 @@ const ADminMenu = () => {
             to="/dashboard/admin/orders"
             className="list-group-item list-group-item-action"
           >
-            <h5><i className="fa-regular fa-user p-1"></i>Orders</h5>
+            <h5><i  className="fa-solid fa-circle-info p-1"></i>Orders</h5>
           </Link>
-          <Link
-            to="/dashboard/admin/help"
-            className="list-group-item list-group-item-action"
-          >
-            <h5><i className="fa-solid fa-circle-info p-1"></i>Help and Feedback</h5>
-          </Link>
+        
 
         </div>
       </div>

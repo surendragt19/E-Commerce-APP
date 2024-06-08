@@ -2,6 +2,7 @@ import { comparePassword, hashPassword } from '../helpers/authHelper.js';
 import userModel from '../models/userModels.js'
 import jwt from 'jsonwebtoken'
 import orderModel from '../models/orderModel.js'
+import contactModel from '../models/contactModel.js';
 
 
 //registraion
@@ -319,3 +320,55 @@ export const orderStatusController = async (req, res) => {
       });
     }
   };
+
+  //contact user
+export const contactController = async(req,res)=>{
+  try {
+    const { name, email, phone, address, message } = req.body;
+    const contact = new contactModel({ name, email, phone, address, message });
+    await contact.save();
+    res.status(201).send({
+      success:true,
+      message:"Message Send Success",
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).send({
+      success:false,
+      message:"Message not in Contact",
+      error
+    })
+    
+  }
+
+}
+
+
+//get all users
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await userModel.find({});
+    res.status(200).json({ success: true, users });
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ success: false, message: 'Error fetching users', error });
+  }
+};
+
+
+//update role
+
+export const updateUserRole = async (req, res) => {
+  const { userId, role } = req.body;
+  try {
+    const user = await userModel.findByIdAndUpdate(userId, { role }, { new: true });
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+    res.status(200).json({ success: true, message: 'User role updated', user });
+  } catch (error) {
+    console.error('Error updating user role:', error);
+    res.status(500).json({ success: false, message: 'Error updating user role', error });
+  }
+};

@@ -40,7 +40,6 @@ function App() {
     <Route path='/contact' element={<Contact/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/login' element={<Login/>}/>
-    <Route path='/policy' element={<PrivacyPolicy/>}/>
     <Route path='*' element={<PageNotFound/>}/>
     <Route path='/forget' element={<Forget/>}/>
     {/* protected Route */}

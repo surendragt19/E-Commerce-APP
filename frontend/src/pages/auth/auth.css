@@ -9,7 +9,7 @@
     min-height: 70vh;
     flex-direction: column;
     background-color: #ffdee9;
-    background-image: linear-gradient(0deg, #9c7b86 0%, #b5ffe4 100%);
+    background-image: radial-gradient(circle,  #b1e6d3 0%, #9c7b86 100%);
   
   }
   

@@ -88,7 +88,7 @@ const Create_Category = () => {
     }
   };
   return (
-    <Layout title={"Dashboard - Create Category"}>
+    <Layout>
       <div className="container-fluid p-3">
         <div className="row">
           <div className="col-md-3">

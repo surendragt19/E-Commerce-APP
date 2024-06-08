@@ -1,5 +1,5 @@
 import express from 'express'
-import {loginController, registerController,updateProfileController, orderStatusController, testColntroller, getAllOrdersController, userProtect,forgetController,adminProtect, getOrdersController} from '../controller/authController.js'
+import {loginController, registerController,updateProfileController, orderStatusController, testColntroller, getAllOrdersController, userProtect,forgetController,adminProtect, getOrdersController, contactController, getAllUsers, updateUserRole} from '../controller/authController.js'
 import { isAdmin, requireSignInMiddleWear } from '../middlewears/authMiddlewear.js';
 const router=express.Router();
 
@@ -39,5 +39,13 @@ router.put(
     isAdmin,
     orderStatusController
   );
-  
+//contact 
+router.post('/contact',contactController)
+
+
+//getAllUsers
+router.get('/allusers', getAllUsers);
 export default router;
+
+//update role
+router.put('/update-role', updateUserRole);
