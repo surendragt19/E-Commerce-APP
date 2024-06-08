@@ -85,33 +85,33 @@ const CartPage = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center p-2 mb-1">
-              {`Hello ${auth?.token && auth?.user?.name}`}
+            <h1 className="text-center p-2 mb-1 mt-3">
+              {`Hello ${auth?.token && auth?.user?.name} !`}
             </h1>
             <h4 className="text-center">
               {cart?.length
-                ? `${cart.length} items in your cart ${
+                ? `${cart.length} Items in your Cart ${
                     auth?.token ? '' : 'First login to checkout Items'
                   }`
                 : 'Your Cart Is Empty'}
             </h4>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-8">
+        <div className="row mt-1">
+          <div className="col-md-8 p-4">
             {cart?.map(p => (
               <div className="row mb-2 p-3 card flex-row" key={p._id}>
                 <div className="col-md-4">
                   <img
                     src={`http://localhost:8000/product/productPhoto/${p._id}`}
-                    className="card-img-top"
+                    className="card-img-top p-1"
                     alt={p.name}
-                    width="100px"
-                    height="100px"
+                    width="250px"
+                    height="350px"
                   />
                 </div>
                 <div className="col-md-8">
-                  <p>{p.name}</p>
+                  <p><b>{p.name}</b></p>
                   <p>{p.description.substring(0, 30)}</p>
                   <p>Price: {p.price}</p>
                   <button
@@ -124,8 +124,8 @@ const CartPage = () => {
               </div>
             ))}
           </div>
-          <div className="col-md-4">
-            <h2 className="text-center">Cart Summary</h2>
+          <div className="col-md-4 p-4">
+            <h2 className="text-center"><u>CART SUMMARY</u></h2>
             <h5 className="text-center">Total | Checkout | Payment</h5>
             <hr />
             <h4 className="text-center">Total: {totalPrice()}</h4>
@@ -184,7 +184,7 @@ const CartPage = () => {
                   />
 
                   <button
-                    className="btn btn-primary m-2"
+                    className="btn btn-success m-2"
                     onClick={handlePayment}
                     disabled={loading || !instance || !auth?.user?.address}
                   >

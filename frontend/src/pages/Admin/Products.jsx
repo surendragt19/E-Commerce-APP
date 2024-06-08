@@ -26,6 +26,7 @@ const Products = () => {
 
     return (
         <Layout>
+        <div className='container-fluid'>
             <div className="row">
                 <div className="col-md-3 mt-3">
                     <ADminMenu />
@@ -52,6 +53,7 @@ const Products = () => {
                         ))}
                     </div>
                 </div>
+            </div>
             </div>
         </Layout>
     );

@@ -1,0 +1,60 @@
+.homecard {
+  display: flex;
+  flex-wrap: wrap;
+}
+.homecard{
+  background-color: rgba(128, 128, 128, 0.097);
+  width: 18rem;
+}
+
+
+.homecard-name-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.homecard-price {
+  color: green;
+  font-weight: bold;
+}
+.homecard-text {
+  color: gray;
+}
+.btn1 {
+  border-radius: 0;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-size: 14px;
+}
+
+.homecard-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center; /* Center the cards when there's only one */
+}
+
+.homecard {
+  flex: 1 1 calc(33.333% - 1rem); /* Make each card take up a third of the row, minus the gap */
+  max-width: calc(33.333% - 1rem); /* Ensure the max-width matches the flex value */
+  min-width: 300px; /* Set a minimum width for smaller screens */
+}
+
+@media (max-width: 768px) {
+  .homecard {
+    flex: 1 1 calc(100% - 1rem); /* Adjust for smaller screens */
+    max-width: calc(100% - 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .homecard {
+    flex: 1 1 100%; /* Full width for very small screens */
+    max-width: 100%;
+  }
+}
+
+.homecard img:hover {
+  transform: scale(0.9);
+}

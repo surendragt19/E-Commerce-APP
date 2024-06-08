@@ -6,7 +6,7 @@ import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from '../context/cart'
 import toast from 'react-hot-toast';
-
+import '../style/home.css'
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [cart,setCart]=useCart()
@@ -106,14 +106,38 @@ const Home = () => {
     }
   };
   return (
-    <Layout title={"ALl Products - Best offers "}>
-      <div className="container-fluid row mt-3">
-        <div className="col-md-2">
-          <h4 className="text-center">Filter By Category</h4>
+    <Layout>
+<div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-touch="false" data-bs-interval="false">
+  <div className="carousel-inner">
+    <div className="carousel-item active">
+      <img src='images/f1.png' className="d-block w-100 img1" alt="..." />
+    </div>
+    <div className="carousel-item">
+      <img src="images/f2.png" className="d-block w-100 img1" alt="..." />
+    </div>
+    <div className="carousel-item">
+      <img src="images/f4.png" className="d-block w-100 img1" alt="..." />
+    </div>
+  </div>
+  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true" />
+    <span className="visually-hidden">Previous</span>
+  </button>
+  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true" />
+    <span className="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+<div className="container-fluid row mt-3 home-page p-4">
+        <div className="col-md-3 filters">
+          <h4 className="text-center"><u style={{textTransform:'uppercase'}}>Filter By Category</u></h4>
           <div className="d-flex flex-column">
-            {categories?.map((c,index) => (
+            {categories?.map((c) => (
               <Checkbox
-                key={index}
+                key={c._id}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
               >
                 {c.name}
@@ -121,11 +145,11 @@ const Home = () => {
             ))}
           </div>
           {/* price filter */}
-          <h4 className="text-center mt-4">Filter By Price</h4>
+          <h4 className="text-center mt-4"><u style={{textTransform:'uppercase'}}>Filter By Price</u></h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-              {Prices?.map((p,indexValue) => (
-                <div key={indexValue}>
+              {Prices?.map((p) => (
+                <div key={p._id}>
                   <Radio value={p.array}>{p.name}</Radio>
                 </div>
               ))}
@@ -133,7 +157,7 @@ const Home = () => {
           </div>
           <div className="d-flex flex-column">
             <button
-              className="btn btn-danger m-2"
+              className="btn btn-danger m-3 m-1"
               onClick={() => window.location.reload()}
             >
               RESET FILTERS
@@ -141,35 +165,58 @@ const Home = () => {
           </div>
         </div>
         <div className="col-md-9">
-          <h1 className="text-center">All Products</h1>
-          <div className="d-flex flex-wrap">
-            {products?.map((p,i) => (
-              <div key={i} className="card m-3" style={{ width: "20rem" }}>
-                <img
-                  src={`http://localhost:8000/product/productPhoto/${p._id}`}
-                  className="card-img-top"
-                  alt={p.name}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">
-                    {p.description.substring(0, 30)}...
-                  </p>
-                  <p className="card-text"> ₹ {p.price}</p>
-                  <button className="btn btn-primary ms-1" onClick={ () => navigate(`/product/${p.slug}`)}>More Details</button>
-                  <button className="btn btn-warning ms-1" onClick={()=>{
-                    setCart([...cart,p])
-                    toast.success('Item added to cart')
-                    localStorage.setItem('cart',JSON.stringify([...cart,p]))
-                  }}>ADD TO CART</button>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-center"><u>ALL PRODUCTS</u></h2>
+          <div className="d-flex flex-wrap w-100">
+  {products?.map((p) => (
+    <div className="homecard m-2 flex-grow-1" key={p._id} style={{minHeight:'360px' }}>
+    <div style={{ width: '100%', height: '275px', overflow: 'hidden' }}>
+    <img
+      src={`http://localhost:8000/product/productPhoto/${p._id}`}
+      className="card-img-top p-3"
+      alt={p.name}
+      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+    />
+  </div>
+      <div className="card-body">
+        <div className="homecard-name-price">
+          <h5 className="card-title">{p.name}</h5>
+          <h5 className="card-title homecard-price">
+            ₹{p.price}
+          </h5>
+        </div>
+        <p className="homecard-text">
+          {p.description.substring(0, 60)}...
+        </p>
+        <div className="card-name-price">
+          <button
+            className="btn1 btn btn-info ms-1"
+            onClick={() => navigate(`/product/${p.slug}`)}
+          >
+            MORE DETAILS
+          </button>
+          <button
+            className="btn1 btn btn-dark ms-1"
+            onClick={() => {
+              setCart([...cart, p]);
+              localStorage.setItem(
+                "cart",
+                JSON.stringify([...cart, p])
+              );
+              toast.success("Item Added to cart");
+            }}
+          >
+            ADD TO CART 
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
           <div className="m-2 p-3">
             {products && products.length < total && (
               <button
-                className="btn btn-primary"
+                className="btn btn-dark"
                 onClick={(e) => {
                   e.preventDefault();
                   setPage(page + 1);

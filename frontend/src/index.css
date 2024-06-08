@@ -65,6 +65,8 @@
 }
 
 
+
+
 /* =================================
 ======== page not found css ======= */
 .pnf {
@@ -121,3 +123,17 @@
       width: 100%;
   }
 }
+.btnCat{
+  border-radius: 0;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-size: 20px;
+  padding: 20px;
+  font-weight: bold;
+}
+.card img:hover {
+  transform: scale(0.9);
+}
+
+

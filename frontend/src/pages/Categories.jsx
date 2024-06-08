@@ -7,13 +7,15 @@ const Categories = () => {
     const categories = useCategory();
   return (
     <Layout>
-      <div className="container">
-        <div className="row">
+      <div className="container" style={{ marginTop: "50px" }}>
+        <div className="row container">
           {categories.map((c) => (
-            <div className="col-md-6 mt-5 mb-3 gx-3 gy-3" key={c._id}>
-              <Link to={`/category/${c.slug}`} className="btn btn-success">
-                {c.name}
-              </Link>
+            <div className="col-md-4 mt-5 mb-5 gx-3 gy-3" key={c._id}>
+              <div className="card">
+                <Link to={`/category/${c.slug}`} className="btn btn-outline-dark btnCat">
+                  {c.name}
+                </Link>
+              </div>
             </div>
           ))}
         </div>
