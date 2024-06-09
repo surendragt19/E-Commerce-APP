@@ -52,8 +52,8 @@ const AdminOrder = () => {
           <div className="col-md-3">
             <ADminMenu />
           </div>
-          <div className="col-md-9">
-            <h1 className="text-center">All Orders</h1>
+          <div className="col-md-9 mt-2 p-1">
+            <h1 className="text-center"><u>All Orders</u></h1>
             {orders?.map((o, i) => (
               <div className="border shadow" key={o._id}>
                 <table className="table">

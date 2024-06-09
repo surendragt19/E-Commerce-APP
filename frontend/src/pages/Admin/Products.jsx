@@ -32,7 +32,7 @@ const Products = () => {
                     <ADminMenu />
                 </div>
                 <div className="col-md-9 mt-3">
-                    <h1 className="text-center">All Products List</h1>
+                    <h1 className="text-center"><u>All Products List</u></h1>
                     <div className="row">
                         {products?.map((p) => (
                             <div key={p._id} className="col-lg-4 mb-4">

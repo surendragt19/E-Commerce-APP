@@ -70,8 +70,8 @@ const Create_Product = () => {
             <ADminMenu />
           </div>
           <div className="col-md-9">
-            <h1><u>Create Product</u></h1>
-            <div className="m-1 w-75">
+            <h1 className='text-center'><u>Create Product</u></h1>
+            <div className="m-3 w-97">
               <Select
                 bordered={false}
                 placeholder="Select a category"

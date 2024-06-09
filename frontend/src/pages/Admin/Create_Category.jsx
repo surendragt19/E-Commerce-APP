@@ -94,21 +94,21 @@ const Create_Category = () => {
           <div className="col-md-3">
             <ADminMenu />
           </div>
-          <div className="col-md-9 mt-1">
-            <h1>Create and Manage Category</h1>
-            <div className="p-3 w-50">
+          <div className="col-md-9 mt-3">
+            <h1 className='text-center'><u>Create and Manage Category</u></h1>
+            <div className="mt-4 m-4 w-96">
               <CategoryForm
                 handleSubmit={handleSubmit}
                 value={name}
                 setValue={setName}
               />
             </div>
-            <div className="w-75">
+            <div className="w-96 m-4">
               <table className="table">
                 <thead>
                   <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Actions</th>
+                  <th scope="col" className="text-start">Name</th>
+                  <th scope="col" className="text-end">Actions</th> 
                   </tr>
                 </thead>
                 <tbody>
@@ -116,7 +116,7 @@ const Create_Category = () => {
                     <>
                       <tr>
                         <td key={c._id}>{c.name}</td>
-                        <td>
+                        <td  className="text-end">
                           <button
                             className="btn btn-info ms-2"
                             onClick={() => {
