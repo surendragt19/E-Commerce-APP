@@ -35,7 +35,7 @@ const Users = () => {
             <ADminMenu />
           </div>
           <div className="col-md-9">
-            <h2 className="text-center mb-5"><u>Registered Users</u></h2>
+            <h2 className="text-center mb-5"><u>All Registered Users</u></h2>
             <div className="row">
               {users.map(user => (
                 <div key={user._id} className="col-md-4 mb-4">
